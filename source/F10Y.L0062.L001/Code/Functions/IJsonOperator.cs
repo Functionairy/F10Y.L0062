@@ -7,6 +7,9 @@ using F10Y.T0011;
 
 namespace F10Y.L0062.L001
 {
+    /// <summary>
+    /// JSON operations for the <see cref="JsonSerializationObject"/> type.
+    /// </summary>
     [FunctionsMarker]
     public partial interface IJsonOperator :
         L0060.IJsonOperator

@@ -17,6 +17,22 @@ namespace F10Y.L0062.L003
 #pragma warning restore IDE1006 // Naming Styles
 
 
+        #region Descriptor Search Descriptors
+
+        public For_PredicateProviderSuite.PredicateProviderSuite<IDescriptorSearchDescriptor, IDescriptor>[] For_DescriptorSearchDescriptors => new[]
+        {
+            _PredicateProviderOperationHandlerSuites.For_DescriptorSearchDescriptor_Name_Simple,
+        };
+
+        private static readonly Lazy<Dictionary<Type, For_PredicateProviderSuite.PredicateProviderSuite<IDescriptorSearchDescriptor, IDescriptor>>> For_DescriptorSearchDescriptors_ByType_Lazy = new(() =>
+            Instances.PredicateProviderSuiteSets.For_DescriptorSearchDescriptors
+                .ToDictionary(x => x.Type)
+        );
+
+        public Dictionary<Type, For_PredicateProviderSuite.PredicateProviderSuite<IDescriptorSearchDescriptor, IDescriptor>> For_DescriptorSearchDescriptors_ByType => For_DescriptorSearchDescriptors_ByType_Lazy.Value;
+
+        #endregion
+
         #region String Search Descriptors
 
         public For_PredicateProviderSuite.PredicateProviderSuite<IStringSearchDescriptor, string>[] For_StringSearchDescriptors => new[]

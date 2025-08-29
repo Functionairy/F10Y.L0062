@@ -2,6 +2,7 @@
 global using IDescriptorSearchDescriptor = F10Y.L0062.L003.T000.IDescriptorSearchDescriptor;
 global using IStringSearchDescriptor = F10Y.L0062.L003.T000.IStringSearchDescriptor;
 
+global using DescriptorSearchDescriptor_Name_Simple = F10Y.L0062.L003.T000.DescriptorSearchDescriptor_Name_Simple;
 global using StringSearchDescriptor_EqualityOperationDescriptor = F10Y.L0062.L003.T000.StringSearchDescriptor_EqualityOperationDescriptor;
 global using StringSearchDescriptor_Equals_Simple = F10Y.L0062.L003.T000.StringSearchDescriptor_Equals_Simple;
 

@@ -9,14 +9,14 @@ namespace F10Y.L0062.L002.Z000
     public partial interface ISetEqualityOperationDescriptors
     {
         public For_SetEqualityOperationDescriptors.SetEqualityOperationDescriptor_Containment Sub => Instances.SetEqualityOperationDescriptorOperator.From(
-            Instances.EqualityOperationDescriptors.For_String_Simple,
+            Instances.EqualityOperationDescriptors.Simple,
             Containment.Sub,
             Contiguity.Noncontiguous,
             OrderDependence.OrderIndependent,
             Inclusiveness.Inclusive);
 
         public For_SetEqualityOperationDescriptors.SetEqualityOperationDescriptor_Containment Super => Instances.SetEqualityOperationDescriptorOperator.From(
-            Instances.EqualityOperationDescriptors.For_String_Simple,
+            Instances.EqualityOperationDescriptors.Simple,
             Containment.Super,
             Contiguity.Noncontiguous,
             OrderDependence.OrderIndependent,

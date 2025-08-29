@@ -19,7 +19,7 @@ namespace F10Y.L0062.L002
 
         public IEqualityOperationDescriptor[] All => new[]
         {
-            _EqualityOperationDescriptors.For_String_SimpleWithNot,
+            _EqualityOperationDescriptors.Simple_WithNot,
         };
     }
 }

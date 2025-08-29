@@ -17,5 +17,11 @@ namespace F10Y.L0062.L002.T000
 
             return output;
         }
+
+        /// <summary>
+        /// Returns the <see cref="IEqualityOperationDescriptors.Simple"/> instance.
+        /// </summary>
+        public EqualityOperationDescriptor_Simple Simple()
+            => Instances.EqualityOperationDescriptors.Simple;
     }
 }

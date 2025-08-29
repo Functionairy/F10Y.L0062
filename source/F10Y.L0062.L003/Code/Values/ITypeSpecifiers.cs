@@ -8,6 +8,13 @@ namespace F10Y.L0062.L003
     [ValuesMarker]
     public partial interface ITypeSpecifiers
     {
+        #region Descriptor Serach Descriptors
+
+        public For_TypeSpecifiers.TypeSpecifier<IDescriptorSearchDescriptor, DescriptorSearchDescriptor_Name_Simple> For_DescriptorSearchDescriptor_Name_Simple =>
+            For_TypeSpecifiers.TypeSpecifier<IDescriptorSearchDescriptor, DescriptorSearchDescriptor_Name_Simple>.Instance;
+
+        #endregion
+
         #region String Search Descriptors
 
         public For_TypeSpecifiers.TypeSpecifier<IStringSearchDescriptor, StringSearchDescriptor_EqualityOperationDescriptor> For_StringSearchDescriptor_EqualityOperationDescriptor =>

@@ -286,6 +286,15 @@ namespace F10Y.L0062.L002.Bases
             return output;
         }
 
+        public IEnumerable<string> To_Text_Noexceptive(TDescriptor descriptor)
+        {
+            var output = this.To_Text_Noexceptive(
+                descriptor,
+                this.TextHandlerSuites_ByType);
+
+            return output;
+        }
+
         public For_Results.N003.Result<
             IEnumerable<string>,
             For_Results.N002.IFailed<TDescriptor>>
@@ -393,6 +402,18 @@ namespace F10Y.L0062.L002.Bases
             Dictionary<Type, DescriptorTextOperationHandlerSuite<TDescriptor>> handlerSuites_ByType)
         {
             var result = this.To_Text_ContentOnly_AsResult(
+                descriptor,
+                handlerSuites_ByType);
+
+            var output = Instances.ResultOperator.Get_Lines_ForOutput(result);
+            return output;
+        }
+
+        public IEnumerable<string> To_Text_Noexceptive(
+            TDescriptor descriptor,
+            Dictionary<Type, DescriptorTextOperationHandlerSuite<TDescriptor>> handlerSuites_ByType)
+        {
+            var result = this.To_Text_AsResult(
                 descriptor,
                 handlerSuites_ByType);
 

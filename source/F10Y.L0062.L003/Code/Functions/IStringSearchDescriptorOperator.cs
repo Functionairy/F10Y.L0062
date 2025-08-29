@@ -49,7 +49,7 @@ namespace F10Y.L0062.L003
             return output;
         }
 
-        public StringSearchDescriptor_Equals_Simple From_ToEqualsSimple(string value)
+        public StringSearchDescriptor_Equals_Simple From_ToEquals_Simple(string value)
         {
             var output = new StringSearchDescriptor_Equals_Simple
             {
