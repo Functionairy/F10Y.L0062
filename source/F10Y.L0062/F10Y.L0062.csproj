@@ -3,6 +3,8 @@
     <TargetFramework>net6.0</TargetFramework>
     <NoWarn>CS1573;CS1587;CS1591;IDE0130</NoWarn>
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
+
+    <SuppressTfmSupportBuildWarnings>true</SuppressTfmSupportBuildWarnings>
   </PropertyGroup>
   <PropertyGroup Label="Package">
     <Version>1.0.0</Version>

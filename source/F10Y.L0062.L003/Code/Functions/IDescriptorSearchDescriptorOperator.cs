@@ -50,7 +50,7 @@ namespace F10Y.L0062.L003
         {
             var lines_ForContent = this.To_Text_ContentOnly(descriptorSearchDescriptor);
 
-            var typeName = Instances.TypeNameOperator.Get_TypeNameOf_DeclaredType(descriptorSearchDescriptor);
+            var typeName = Instances.TypeNameOperator.Get_TypeName_OfDeclaredType(descriptorSearchDescriptor);
 
             var output = Instances.EnumerableOperator.From($"Descriptor Search Descriptor ({typeName})")
                 .Append_Many(lines_ForContent.Entab())

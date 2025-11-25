@@ -13,12 +13,12 @@ namespace F10Y.L0062.L002
 #pragma warning disable IDE1006 // Naming Styles
 
         [Ignore]
-        public L0001.IGuidOperator _F10Y_L0001 => L0001.GuidOperator.Instance;
+        L0001.IGuidOperator _F10Y_L0001 => L0001.GuidOperator.Instance;
 
 #pragma warning restore IDE1006 // Naming Styles
 
 
-        public string To_String_ForDescriptor(Guid guid)
+        string To_String_ForDescriptor(Guid guid)
         {
             var output = this.To_String_Standard(guid);
             return output;

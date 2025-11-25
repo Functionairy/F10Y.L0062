@@ -61,7 +61,7 @@ namespace F10Y.L0062.L002
         {
             var lines_ForContent = this.To_Text_ContentOnly(equalityOperationDescriptor);
 
-            var typeName = Instances.TypeNameOperator.Get_TypeNameOf_DeclaredType(equalityOperationDescriptor);
+            var typeName = Instances.TypeNameOperator.Get_TypeName_OfDeclaredType(equalityOperationDescriptor);
 
             var output = Instances.EnumerableOperator.From($"Equality Operation Descriptor ({typeName})")
                 .Append_Many(lines_ForContent.Entab())
@@ -83,7 +83,7 @@ namespace F10Y.L0062.L002
         {
             var lines_ForContent = this.To_Text_ContentOnly(equalityOperationDescriptor);
 
-            var typeName = Instances.TypeNameOperator.Get_TypeNameOf_DeclaredType(equalityOperationDescriptor);
+            var typeName = Instances.TypeNameOperator.Get_TypeName_OfDeclaredType(equalityOperationDescriptor);
 
             var output = Instances.EnumerableOperator.From($"Equality Operation Descriptor ({typeName})")
                 .Append_Many(lines_ForContent.Entab())
