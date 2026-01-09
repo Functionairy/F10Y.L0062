@@ -9,6 +9,7 @@ namespace F10Y.L0062.L002
         public static L0001.IArrayOperator ArrayOperator => L0001.ArrayOperator.Instance;
         public static L0001.IContainmentOperator ContainmentOperator => L0001.ContainmentOperator.Instance;
         public static L0001.IContiguityOperator ContiguityOperator => L0001.ContiguityOperator.Instance;
+        public static IDescriptorHandlers DescriptorHandlers => L002.DescriptorHandlers.Instance;
         public static IDescriptorOperator DescriptorOperator => L002.DescriptorOperator.Instance;
         public static IDescriptorTextOperationHandlerSuites DescriptorTextOperationHandlerSuites => L002.DescriptorTextOperationHandlerSuites.Instance;
         public static IDescriptorTextOperationHandlerSuiteSets DescriptorTextOperationHandlerSuiteSets => L002.DescriptorTextOperationHandlerSuiteSets.Instance;
@@ -20,6 +21,9 @@ namespace F10Y.L0062.L002
         public static IExceptionMessages ExceptionMessages => L002.ExceptionMessages.Instance;
         public static IExceptionOperator ExceptionOperator => L002.ExceptionOperator.Instance;
         public static IGuidOperator GuidOperator => L002.GuidOperator.Instance;
+        public static L0000.IHashCodeOperator HashCodeOperator => L0000.HashCodeOperator.Instance;
+        public static IHandlerSuites HandlerSuites => L002.HandlerSuites.Instance;
+        public static IHandlerSuiteSets HandlerSuiteSets => L002.HandlerSuiteSets.Instance;
         public static IHandlerSuiteOperator HandlerSuiteOperator => L002.HandlerSuiteOperator.Instance;
         public static L0001.IInclusivenessOperator InclusivenessOperator => L0001.InclusivenessOperator.Instance;
         public static L0060.IJsonElementOperator JsonElementOperator => L0060.JsonElementOperator.Instance;

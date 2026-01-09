@@ -11,6 +11,7 @@ namespace F10Y.L0062.L002
     /// </summary>
     [UtilityTypeMarker]
     public class PredicateProviderSuite<T> :
+        IHandlerSuite,
         IWith_Type
     {
         public Type Type { get; set; }
@@ -27,6 +28,7 @@ namespace F10Y.L0062.L002
     /// </summary>
     [UtilityTypeMarker]
     public class PredicateProviderSuite<TDescriptor, T> :
+        IHandlerSuite,
         IWith_Type
     {
         public Type Type { get; set; }

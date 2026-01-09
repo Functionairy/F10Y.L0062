@@ -1,13 +1,17 @@
 ﻿using System;
 using System.Collections.Generic;
-
 using System.Text.Json;
+
+using F10Y.T0004;
 
 
 namespace F10Y.L0062.L002
 {
-    public class DescriptorTextOperationHandlerSuite<TDescriptor>
-        : IWith_Type
+    [DataTypeMarker]
+    public class DescriptorTextOperationHandlerSuite<TDescriptor> :
+        IWith_Type,
+        IJsonElementSerializationHandlerSuite<TDescriptor>,
+        ITextSerializationHandlerSuite<TDescriptor>
     {
         public Type Type { get; set; }
 

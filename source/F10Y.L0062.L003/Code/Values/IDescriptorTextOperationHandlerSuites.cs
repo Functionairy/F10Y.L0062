@@ -10,21 +10,20 @@ namespace F10Y.L0062.L003
     {
         #region Descriptor Search Descriptors
 
-        public For_DescriptorTextOperationHandlerSuite.DescriptorTextOperationHandlerSuite<IDescriptorSearchDescriptor> For_DescriptorSearchDescriptor_Name_Simple => new()
-        {
-            Type = Instances.TypeOperator.Get_Type<DescriptorSearchDescriptor_Name_Simple>(),
-            To_Text = Instances.TypeOperator.Get_Operator_WithInputTypeVerified(
-                Instances.DescriptorSearchDescriptorOperator.To_Text,
-                Instances.TypeSpecifiers.For_DescriptorSearchDescriptor_Name_Simple),
-            To_Text_ContentOnly = Instances.TypeOperator.Get_Operator_WithInputTypeVerified(
-                Instances.DescriptorSearchDescriptorOperator.To_Text_ContentOnly,
-                Instances.TypeSpecifiers.For_DescriptorSearchDescriptor_Name_Simple),
-            From_JsonElement = Instances.JsonElementOperator.Deserialize<DescriptorSearchDescriptor_Name_Simple>,
-            To_JsonElement = Instances.JsonElementOperator.Serialize
-        };
+        //public For_DescriptorTextOperationHandlerSuite.DescriptorTextOperationHandlerSuite<IDescriptorSearchDescriptor> For_DescriptorSearchDescriptor_Name_Simple => new()
+        //{
+        //    Type = Instances.TypeOperator.Get_Type<DescriptorSearchDescriptor_Name_Simple>(),
+        //    To_Text = Instances.TypeOperator.Get_Operator_WithInputTypeVerified(
+        //        Instances.DescriptorSearchDescriptorOperator.To_Text,
+        //        Instances.TypeSpecifiers.For_DescriptorSearchDescriptor_Name_Simple),
+        //    To_Text_ContentOnly = Instances.TypeOperator.Get_Operator_WithInputTypeVerified(
+        //        Instances.DescriptorSearchDescriptorOperator.To_Text_ContentOnly,
+        //        Instances.TypeSpecifiers.For_DescriptorSearchDescriptor_Name_Simple),
+        //    From_JsonElement = Instances.JsonElementOperator.Deserialize<DescriptorSearchDescriptor_Name_Simple>,
+        //    To_JsonElement = Instances.JsonElementOperator.Serialize
+        //};
 
         #endregion
-
 
         #region String Search Descriptors
 

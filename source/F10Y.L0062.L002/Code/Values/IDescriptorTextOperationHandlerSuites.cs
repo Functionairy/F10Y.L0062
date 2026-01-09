@@ -12,18 +12,18 @@ namespace F10Y.L0062.L002
     {
         #region Descriptors
 
-        public DescriptorTextOperationHandlerSuite<IDescriptor> For_Descriptor => new()
-        {
-            Type = Instances.TypeOperator.Get_Type<Descriptor>(),
-            To_Text = Instances.TypeOperator.Get_Operator_WithInputTypeVerified(
-                Instances.DescriptorOperator.To_Text,
-                Instances.TypeSpecifiers.For_Descriptor),
-            To_Text_ContentOnly = Instances.TypeOperator.Get_Operator_WithInputTypeVerified(
-                Instances.DescriptorOperator.To_Text_ContentOnly,
-                Instances.TypeSpecifiers.For_Descriptor),
-            From_JsonElement = Instances.JsonElementOperator.Deserialize<Descriptor>,
-            To_JsonElement = Instances.JsonElementOperator.Serialize
-        };
+        //public DescriptorTextOperationHandlerSuite<IDescriptor> For_Descriptor => new()
+        //{
+        //    Type = Instances.TypeOperator.Get_Type<Descriptor>(),
+        //    To_Text = Instances.TypeOperator.Get_Operator_WithInputTypeVerified(
+        //        Instances.DescriptorOperator.To_Text,
+        //        Instances.TypeSpecifiers.For_Descriptor),
+        //    To_Text_ContentOnly = Instances.TypeOperator.Get_Operator_WithInputTypeVerified(
+        //        Instances.DescriptorOperator.To_Text_ContentOnly,
+        //        Instances.TypeSpecifiers.For_Descriptor),
+        //    From_JsonElement = Instances.JsonElementOperator.Deserialize<Descriptor>,
+        //    To_JsonElement = Instances.JsonElementOperator.Serialize
+        //};
 
         #endregion
 

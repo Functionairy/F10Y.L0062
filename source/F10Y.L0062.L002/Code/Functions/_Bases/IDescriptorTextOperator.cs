@@ -1,6 +1,5 @@
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 
 using F10Y.T0002;
@@ -15,101 +14,27 @@ namespace F10Y.L0062.L002.Bases
     /// <inheritdoc cref="Documentation.Project_SelfDescription" path="/summary"/>
     /// </remarks>
     [FunctionsMarker]
-    public partial interface IDescriptorTextOperator<TDescriptor>
+    public partial interface IDescriptorTextOperator<TDescriptor> :
+        N001.IDescriptorTextOperator<TDescriptor>
     {
         Dictionary<Type, DescriptorTextOperationHandlerSuite<TDescriptor>> TextHandlerSuites_ByType { get; }
 
         Dictionary<string, DescriptorTextOperationHandlerSuite<TDescriptor>> TextHandlerSuites_ByTypeName { get; }
 
 
-        TDescriptor From_JsonSerializationObject(
-            JsonSerializationObject jsonSerializationObject,
-            Dictionary<string, DescriptorTextOperationHandlerSuite<TDescriptor>> handlerSuites_ByTypeName)
+        TDescriptor[] From_JsonSerializationObjects(IEnumerable<JsonSerializationObject> jsonSerializationObjects)
+            => this.From_JsonSerializationObjects(
+                jsonSerializationObjects,
+                this.TextHandlerSuites_ByTypeName);
+
+        TDescriptor[] From_JsonSerializationObjects_NullIfNull(IEnumerable<JsonSerializationObject> jsonSerializationObjects)
         {
-            var isNull = Instances.NullOperator.Is_Null(jsonSerializationObject);
-            if (isNull)
-            {
-                return default;
-            }
+            var is_Null = Instances.NullOperator.Is_Null(jsonSerializationObjects);
 
-            var handlerSuite = Instances.HandlerSuiteOperator.Verify_CanHandle(
-                jsonSerializationObject.TypeName,
-                handlerSuites_ByTypeName);
-
-            var descriptor = Instances.JsonOperator.From_JsonSerializationObject(
-                jsonSerializationObject,
-                handlerSuite.From_JsonElement);
-
-            return descriptor;
-        }
-
-        IEnumerable<TDescriptor> Enumerate_FromJsonSerializationObjects(
-            IEnumerable<JsonSerializationObject> jsonSerializationObjects,
-            Dictionary<string, DescriptorTextOperationHandlerSuite<TDescriptor>> handlerSuites_ByTypeName)
-        {
-            var output = jsonSerializationObjects
-                .Select(jsonSerializationObject => this.From_JsonSerializationObject(
-                    jsonSerializationObject,
-                    handlerSuites_ByTypeName)
-                )
+            var output = is_Null
+                ? null
+                : this.From_JsonSerializationObjects(jsonSerializationObjects)
                 ;
-
-            return output;
-        }
-
-        TDescriptor[] From_JsonSerializationObjects(
-            IEnumerable<JsonSerializationObject> jsonSerializationObjects,
-            Dictionary<string, DescriptorTextOperationHandlerSuite<TDescriptor>> handlerSuites_ByTypeName)
-        {
-            var output = this.Enumerate_FromJsonSerializationObjects(
-                jsonSerializationObjects,
-                handlerSuites_ByTypeName)
-                .ToArray();
-
-            return output;
-        }
-
-        /// <summary>
-        /// Deserialize from a <see cref="JsonSerializationObject"/>-formatted JSON text.
-        /// </summary>
-        TDescriptor Deserialize_FromJsonText(
-            string jsonText,
-            Dictionary<string, DescriptorTextOperationHandlerSuite<TDescriptor>> handlerSuites_ByTypeName)
-        {
-            var jsonSerializationObject = Instances.JsonOperator.Deserialize_FromText<JsonSerializationObject>(jsonText);
-
-            var output = this.From_JsonSerializationObject(
-                jsonSerializationObject,
-                handlerSuites_ByTypeName);
-
-            return output;
-        }
-
-        /// <summary>
-        /// Deserialize from a <see cref="JsonSerializationObject"/>-formatted JSON file.
-        /// </summary>
-        async Task<TDescriptor> Deserialize_FromJsonFile(
-            string jsonText,
-            Dictionary<string, DescriptorTextOperationHandlerSuite<TDescriptor>> handlerSuites_ByTypeName)
-        {
-            var jsonSerializationObject = await Instances.JsonOperator.Deserialize_FromFile<JsonSerializationObject>(jsonText);
-
-            var output = this.From_JsonSerializationObject(
-                jsonSerializationObject,
-                handlerSuites_ByTypeName);
-
-            return output;
-        }
-
-        async Task<TDescriptor[]> Deserialize_Many_FromJsonFile(
-            string jsonFilePath,
-            Dictionary<string, DescriptorTextOperationHandlerSuite<TDescriptor>> handlerSuites_ByTypeName)
-        {
-            var jsonSerializationObjects = await Instances.JsonOperator.Deserialize_FromFile<JsonSerializationObject[]>(jsonFilePath);
-
-            var output = this.From_JsonSerializationObjects(
-                jsonSerializationObjects,
-                handlerSuites_ByTypeName);
 
             return output;
         }
@@ -148,68 +73,15 @@ namespace F10Y.L0062.L002.Bases
             return output;
         }
 
-        IEnumerable<JsonSerializationObject> Enumerate_JsonSerializationObjects(
-            IEnumerable<TDescriptor> descriptors,
-            Dictionary<Type, DescriptorTextOperationHandlerSuite<TDescriptor>> handlerSuites_ByType)
-        {
-            var output = descriptors
-                .Select(descriptor => this.To_JsonSerializationObject(
-                    descriptor,
-                    handlerSuites_ByType)
-                )
-                ;
-
-            return output;
-        }
-
-        JsonSerializationObject To_JsonSerializationObject(
-            TDescriptor descriptor,
-            Dictionary<Type, DescriptorTextOperationHandlerSuite<TDescriptor>> handlerSuites_ByType)
-        {
-            var isNull = Instances.NullOperator.Is_Null(descriptor);
-            if (isNull)
-            {
-                return Instances.JsonOperator.Get_JsonSerializationObject_ForNull();
-            }
-
-            var handlerSuite = Instances.HandlerSuiteOperator.Verify_CanHandle(
-                descriptor,
-                handlerSuites_ByType);
-
-            var output = Instances.JsonOperator.To_JsonSerializationObject(
-                descriptor,
-                handlerSuite.To_JsonElement);
-
-            return output;
-        }
-
-        async Task Serialize_ToJsonFile(
-            string jsonFilePath,
-            TDescriptor descriptor,
-            Dictionary<Type, DescriptorTextOperationHandlerSuite<TDescriptor>> handlerSuites_ByType)
-        {
-            var jsonSerializationObject = this.To_JsonSerializationObject(
-                descriptor,
-                handlerSuites_ByType);
-
-            await Instances.JsonOperator.Serialize(
-                jsonFilePath,
-                jsonSerializationObject);
-        }
-
-        async Task Serialize_ToJsonFile(
-            string jsonFilePath,
-            IEnumerable<TDescriptor> descriptors,
-            Dictionary<Type, DescriptorTextOperationHandlerSuite<TDescriptor>> handlerSuites_ByType)
-        {
-            var jsonSerializationObjects = this.Enumerate_JsonSerializationObjects(
+        JsonSerializationObject[] To_JsonSerializationObjects(params TDescriptor[] descriptors)
+            => this.To_JsonSerializationObjects(
                 descriptors,
-                handlerSuites_ByType);
+                this.TextHandlerSuites_ByType);
 
-            await Instances.JsonOperator.Serialize(
-                jsonFilePath,
-                jsonSerializationObjects);
-        }
+        JsonSerializationObject[] To_JsonSerializationObjects_NullIfNull(params TDescriptor[] descriptors)
+            => Instances.NullOperator.If_Null_Else(
+                descriptors,
+                this.To_JsonSerializationObjects);
 
         Task Serialize_ToJsonFile(
             string jsonFilePath,
@@ -219,18 +91,6 @@ namespace F10Y.L0062.L002.Bases
                 jsonFilePath,
                 descriptors,
                 this.TextHandlerSuites_ByType);
-        }
-
-        string Serialize_ToJsonText(
-            TDescriptor descriptor,
-            Dictionary<Type, DescriptorTextOperationHandlerSuite<TDescriptor>> handlerSuites_ByType)
-        {
-            var jsonSerializationObject = this.To_JsonSerializationObject(
-                descriptor,
-                handlerSuites_ByType);
-
-            var output = Instances.JsonOperator.Serialize_ToText(jsonSerializationObject);
-            return output;
         }
 
         Task Serialize_ToJsonFile(
@@ -296,199 +156,6 @@ namespace F10Y.L0062.L002.Bases
             var output = this.To_Text_Noexceptive(
                 descriptor,
                 this.TextHandlerSuites_ByType);
-
-            return output;
-        }
-
-        For_Results.N003.Result<
-            IEnumerable<string>,
-            For_Results.N002.IFailed<TDescriptor>>
-            To_Text_AsResult(
-            TDescriptor descriptor,
-            Dictionary<Type, DescriptorTextOperationHandlerSuite<TDescriptor>> handlerSuites_ByType)
-        {
-            var can_Handle = Instances.HandlerSuiteOperator.Can_Handle(
-                descriptor,
-                handlerSuites_ByType,
-                out var handlerSuite_OrDefault);
-
-            if (can_Handle)
-            {
-                var lines = handlerSuite_OrDefault.To_Text(descriptor);
-
-                var output = new For_Results.N003.Result<IEnumerable<string>, For_Results.N002.IFailed<TDescriptor>>
-                {
-                    Is_Success = true,
-                    Success = lines,
-                };
-
-                return output;
-            }
-            else
-            {
-                var message = Instances.ExceptionMessageOperator.Get_NoHandlerSuiteFoundForDescriptorTypeExceptionMessage(descriptor);
-
-                var output = new For_Results.N003.Result<IEnumerable<string>, For_Results.N002.IFailed<TDescriptor>>
-                {
-                    Is_Success = false,
-                    Failure = new For_Results.N002.Failed<TDescriptor>
-                    {
-                        Message_Lines = Instances.EnumerableOperator.From(message),
-                        Value = descriptor
-                    }
-                };
-
-                return output;
-            }
-        }
-
-        For_Results.N003.Result<
-            IEnumerable<string>,
-            For_Results.N002.IFailed<TDescriptor>>
-            To_Text_ContentOnly_AsResult(
-            TDescriptor descriptor,
-            Dictionary<Type, DescriptorTextOperationHandlerSuite<TDescriptor>> handlerSuites_ByType)
-        {
-            var isNull = Instances.NullOperator.Is_Null(descriptor);
-            if (isNull)
-            {
-                var message = $"Descriptor was {Instances.Texts.null_Bracketed}.";
-
-                var output = new For_Results.N003.Result<IEnumerable<string>, For_Results.N002.IFailed<TDescriptor>>
-                {
-                    Is_Success = false,
-                    Failure = new For_Results.N002.Failed<TDescriptor>
-                    {
-                        Message_Lines = Instances.EnumerableOperator.From(message),
-                        Value = descriptor
-                    }
-                };
-
-                return output;
-            }
-
-            var can_Handle = Instances.HandlerSuiteOperator.Can_Handle(
-                descriptor,
-                handlerSuites_ByType,
-                out var handlerSuite_OrDefault);
-
-            if (can_Handle)
-            {
-                var lines = handlerSuite_OrDefault.To_Text_ContentOnly(descriptor);
-
-                var output = new For_Results.N003.Result<IEnumerable<string>, For_Results.N002.IFailed<TDescriptor>>
-                {
-                    Is_Success = true,
-                    Success = lines,
-                };
-
-                return output;
-            }
-            else
-            {
-                var message = Instances.ExceptionMessageOperator.Get_NoHandlerSuiteFoundForDescriptorTypeExceptionMessage(descriptor);
-
-                var output = new For_Results.N003.Result<IEnumerable<string>, For_Results.N002.IFailed<TDescriptor>>
-                {
-                    Is_Success = false,
-                    Failure = new For_Results.N002.Failed<TDescriptor>
-                    {
-                        Message_Lines = Instances.EnumerableOperator.From(message),
-                        Value = descriptor
-                    }
-                };
-
-                return output;
-            }
-        }
-
-        IEnumerable<string> To_Text_ContentOnly_Noexceptive(
-            TDescriptor descriptor,
-            Dictionary<Type, DescriptorTextOperationHandlerSuite<TDescriptor>> handlerSuites_ByType)
-        {
-            var result = this.To_Text_ContentOnly_AsResult(
-                descriptor,
-                handlerSuites_ByType);
-
-            var output = Instances.ResultOperator.Get_Lines_ForOutput(result);
-            return output;
-        }
-
-        IEnumerable<string> To_Text_Noexceptive(
-            TDescriptor descriptor,
-            Dictionary<Type, DescriptorTextOperationHandlerSuite<TDescriptor>> handlerSuites_ByType)
-        {
-            var result = this.To_Text_AsResult(
-                descriptor,
-                handlerSuites_ByType);
-
-            var output = Instances.ResultOperator.Get_Lines_ForOutput(result);
-            return output;
-        }
-
-        For_Results.N003.Result<
-            IEnumerable<string>,
-            For_Results.N002.IFailed<TDescriptor>[]>
-            To_Text_AsResult(
-            IEnumerable<TDescriptor> descriptors,
-            Dictionary<Type, DescriptorTextOperationHandlerSuite<TDescriptor>> handlerSuites_ByType)
-        {
-            var descriptors_Actual = descriptors.ToArray();
-
-            var can_Handle_Results = Instances.HandlerSuiteOperator.Can_Handle(
-                descriptors_Actual as IEnumerable<TDescriptor>,
-                handlerSuites_ByType);
-
-            var failures = can_Handle_Results
-                .Where(x => !x.Success)
-                .Select(result =>
-                {
-                    var descriptor = result.Input;
-
-                    var message = Instances.ExceptionMessageOperator.Get_NoHandlerSuiteFoundForDescriptorTypeExceptionMessage(descriptor);
-
-                    var output = new For_Results.N002.Failed<TDescriptor>
-                    {
-                        Value = descriptor,
-                        Message_Lines = Instances.EnumerableOperator.From(message),
-                    };
-
-                    return output;
-                })
-                .ToArray();
-
-            var is_Success = failures.Any();
-
-            var successes = can_Handle_Results
-                .Where(x => x.Success)
-                ;
-
-            var any_Successes = successes.Any();
-
-            var successes_Lines = any_Successes
-                ? successes
-                    .SelectMany(result =>
-                    {
-                        var descriptor = result.Input;
-
-                        var lines = result.Output.To_Text(descriptor);
-                        return lines;
-                    })
-                : Instances.EnumerableOperator.From("<No results>")
-                ;
-
-            var descriptors_Count = Instances.ArrayOperator.Get_Count(descriptors_Actual);
-
-            var output_Lines = Instances.EnumerableOperator.From($"Descriptor count: {descriptors_Count}\n")
-                .Append_Many(successes_Lines)
-                ;
-
-            var output = new For_Results.N003.Result<IEnumerable<string>, For_Results.N002.IFailed<TDescriptor>[]>
-            {
-                Is_Success = true,
-                Success = output_Lines,
-                Failure = failures
-            };
 
             return output;
         }

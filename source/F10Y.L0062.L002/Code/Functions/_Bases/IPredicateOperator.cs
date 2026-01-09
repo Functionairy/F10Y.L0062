@@ -6,13 +6,17 @@ using F10Y.T0002;
 
 namespace F10Y.L0062.L002.Bases
 {
+    /// <summary>
+    /// OBSOLETE
+    /// </summary>
+    /// <typeparam name="TDescriptor"></typeparam>
     [FunctionsMarker]
     public partial interface IPredicateOperator<TDescriptor>
     {
         Dictionary<Type, PredicateProviderSuite<TDescriptor>> PredicateProviderSuites_ByType { get; }
 
 
-        public bool Has_Predicate_Synchronous(
+        bool Has_Predicate_Synchronous(
             TDescriptor descriptor,
             out Func<TDescriptor, bool> predicate_OrDefault)
         {
@@ -37,7 +41,7 @@ namespace F10Y.L0062.L002.Bases
             return can_Handle;
         }
 
-        public For_Results.N004.Result<Func<TDescriptor, bool>> Has_Predicate_Synchronous(TDescriptor descriptor)
+        For_Results.N004.Result<Func<TDescriptor, bool>> Has_Predicate_Synchronous(TDescriptor descriptor)
         {
             var has_Predicate = this.Has_Predicate_Synchronous(
                 descriptor,
@@ -54,13 +58,16 @@ namespace F10Y.L0062.L002.Bases
     }
 
 
+    /// <summary>
+    /// OBSOLETE
+    /// </summary>
     [FunctionsMarker]
     public partial interface IPredicateOperator<TDescriptor, T>
     {
         Dictionary<Type, PredicateProviderSuite<TDescriptor, T>> PredicateProviderSuites_ByType { get; }
 
 
-        public bool Has_Predicate_Synchronous(
+        bool Has_Predicate_Synchronous(
             TDescriptor descriptor,
             out Func<T, bool> predicate_OrDefault)
         {
@@ -85,7 +92,7 @@ namespace F10Y.L0062.L002.Bases
             return can_Handle;
         }
 
-        public For_Results.N004.Result<Func<T, bool>> Has_Predicate_Synchronous(TDescriptor descriptor)
+        For_Results.N004.Result<Func<T, bool>> Has_Predicate_Synchronous(TDescriptor descriptor)
         {
             var has_Predicate = this.Has_Predicate_Synchronous(
                 descriptor,
@@ -100,7 +107,7 @@ namespace F10Y.L0062.L002.Bases
             return output;
         }
 
-        public Func<T, bool> Get_Predicate_Synchronous(TDescriptor descriptor)
+        Func<T, bool> Get_Predicate_Synchronous(TDescriptor descriptor)
         {
             this.Verify_HasPredicate_Synchronous(
                 descriptor,
@@ -109,7 +116,7 @@ namespace F10Y.L0062.L002.Bases
             return predicate_OrDefault;
         }
 
-        public void Verify_HasPredicate_Synchronous(
+        void Verify_HasPredicate_Synchronous(
             TDescriptor descriptor,
             out Func<T, bool> predicate_OrDefault)
         {

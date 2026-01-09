@@ -21,26 +21,26 @@ namespace F10Y.L0062.L002
 
         #region Descriptors
 
-        public DescriptorTextOperationHandlerSuite<IDescriptor>[] For_Descriptors => new[]
-        {
-            _DescriptorTextOperationHandlerSuites.For_Descriptor,
-        };
+        //public DescriptorTextOperationHandlerSuite<IDescriptor>[] For_Descriptors => new[]
+        //{
+        //    _DescriptorTextOperationHandlerSuites.For_Descriptor,
+        //};
 
-        private static readonly Lazy<Dictionary<Type, DescriptorTextOperationHandlerSuite<IDescriptor>>> For_Descriptors_ByType_Lazy = new(() =>
-            DescriptorTextOperationHandlerSuiteSets.Instance.For_Descriptors
-                .ToDictionary(x => x.Type)
-        );
+        //private static readonly Lazy<Dictionary<Type, DescriptorTextOperationHandlerSuite<IDescriptor>>> For_Descriptors_ByType_Lazy = new(() =>
+        //    DescriptorTextOperationHandlerSuiteSets.Instance.For_Descriptors
+        //        .ToDictionary(x => x.Type)
+        //);
 
-        public Dictionary<Type, DescriptorTextOperationHandlerSuite<IDescriptor>> For_Descriptors_ByType => For_Descriptors_ByType_Lazy.Value;
+        //public Dictionary<Type, DescriptorTextOperationHandlerSuite<IDescriptor>> For_Descriptors_ByType => For_Descriptors_ByType_Lazy.Value;
 
-        private static readonly Lazy<Dictionary<string, DescriptorTextOperationHandlerSuite<IDescriptor>>> For_Descriptors_ByTypeName_Lazy = new(() =>
-            DescriptorTextOperationHandlerSuiteSets.Instance.For_Descriptors_ByType
-                .ToDictionary(
-                    pair => Instances.TypeNameOperator.Get_TypeName(pair.Key),
-                    pair => pair.Value)
-        );
+        //private static readonly Lazy<Dictionary<string, DescriptorTextOperationHandlerSuite<IDescriptor>>> For_Descriptors_ByTypeName_Lazy = new(() =>
+        //    DescriptorTextOperationHandlerSuiteSets.Instance.For_Descriptors_ByType
+        //        .ToDictionary(
+        //            pair => Instances.TypeNameOperator.Get_TypeName(pair.Key),
+        //            pair => pair.Value)
+        //);
 
-        public Dictionary<string, DescriptorTextOperationHandlerSuite<IDescriptor>> For_Descriptors_ByTypeName => For_Descriptors_ByTypeName_Lazy.Value;
+        //public Dictionary<string, DescriptorTextOperationHandlerSuite<IDescriptor>> For_Descriptors_ByTypeName => For_Descriptors_ByTypeName_Lazy.Value;
 
         #endregion
 
