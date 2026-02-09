@@ -16,12 +16,5 @@ namespace F10Y.L0062.L002.Z000
         public T000.IEqualityOperationDescriptors _T000 => T000.EqualityOperationDescriptors.Instance;
 
 #pragma warning restore IDE1006 // Naming Styles
-
-
-        public For_EqualityOperationDescriptors.EqualityOperationDescriptor_Simple_WithNot Simple_WithNot
-            => Instances.EqualityOperationDescriptorOperator.From(true);
-
-        public For_EqualityOperationDescriptors.EqualityOperationDescriptor_Simple_WithNot Simple_WithoutNot
-            => Instances.EqualityOperationDescriptorOperator.From(false);
     }
 }

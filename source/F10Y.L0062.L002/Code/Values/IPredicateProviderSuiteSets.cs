@@ -21,36 +21,36 @@ namespace F10Y.L0062.L002
 
         #region Equality Operation Descriptors - String
 
-        public BinaryPredicateProviderSuite<IEqualityOperationDescriptor, string>[] For_EqualityOperationDescriptors_OfString => new[]
-        {
-            _PredicateProviderOperationHandlerSuites.For_EqualityOperationDescriptor_Simple_OfString,
-            _PredicateProviderOperationHandlerSuites.For_EqualityOperationDescriptor_Simple_WithNot_OfString,
-        };
+        //public BinaryPredicateProviderSuite<IEqualityOperationDescriptor, string>[] For_EqualityOperationDescriptors_OfString => new[]
+        //{
+        //    _PredicateProviderOperationHandlerSuites.For_EqualityOperationDescriptor_Simple_OfString,
+        //    _PredicateProviderOperationHandlerSuites.For_EqualityOperationDescriptor_Simple_WithNot_OfString,
+        //};
 
-        private static readonly Lazy<Dictionary<Type, BinaryPredicateProviderSuite<IEqualityOperationDescriptor, string>>> For_EqualityOperationDescriptors_OfString_ByType_Lazy = new(() =>
-            Instances.PredicateProviderSuiteSets.For_EqualityOperationDescriptors_OfString
-                .ToDictionary(x => x.Type)
-        );
+        //private static readonly Lazy<Dictionary<Type, BinaryPredicateProviderSuite<IEqualityOperationDescriptor, string>>> For_EqualityOperationDescriptors_OfString_ByType_Lazy = new(() =>
+        //    Instances.PredicateProviderSuiteSets.For_EqualityOperationDescriptors_OfString
+        //        .ToDictionary(x => x.Type)
+        //);
 
-        public Dictionary<Type, BinaryPredicateProviderSuite<IEqualityOperationDescriptor, string>> For_EqualityOperationDescriptors_OfString_ByType => For_EqualityOperationDescriptors_OfString_ByType_Lazy.Value;
+        //public Dictionary<Type, BinaryPredicateProviderSuite<IEqualityOperationDescriptor, string>> For_EqualityOperationDescriptors_OfString_ByType => For_EqualityOperationDescriptors_OfString_ByType_Lazy.Value;
 
         #endregion
 
         #region Set Equality Operation Descriptors - String
 
-        public BinaryPredicateProviderSuite<ISetEqualityOperationDescriptor, string[]>[] For_SetEqualityOperationDescriptors_OfString => new[]
-        {
-            _PredicateProviderOperationHandlerSuites.For_SetEqualityOperationDescriptor_OfString,
-            _PredicateProviderOperationHandlerSuites.For_SetEqualityOperationDescriptor_Containment_OfString,
-            _PredicateProviderOperationHandlerSuites.For_SetEqualityOperationDescriptor_Intersection_OfString,
-        };
+        //public BinaryPredicateProviderSuite<ISetEqualityOperationDescriptor, string[]>[] For_SetEqualityOperationDescriptors_OfString => new[]
+        //{
+        //    _PredicateProviderOperationHandlerSuites.For_SetEqualityOperationDescriptor_OfString,
+        //    _PredicateProviderOperationHandlerSuites.For_SetEqualityOperationDescriptor_Containment_OfString,
+        //    _PredicateProviderOperationHandlerSuites.For_SetEqualityOperationDescriptor_Intersection_OfString,
+        //};
 
-        private static readonly Lazy<Dictionary<Type, BinaryPredicateProviderSuite<ISetEqualityOperationDescriptor, string[]>>> For_SetEqualityOperationDescriptors_OfString_ByType_Lazy = new(() =>
-            Instances.PredicateProviderSuiteSets.For_SetEqualityOperationDescriptors_OfString
-                .ToDictionary(x => x.Type)
-        );
+        //private static readonly Lazy<Dictionary<Type, BinaryPredicateProviderSuite<ISetEqualityOperationDescriptor, string[]>>> For_SetEqualityOperationDescriptors_OfString_ByType_Lazy = new(() =>
+        //    Instances.PredicateProviderSuiteSets.For_SetEqualityOperationDescriptors_OfString
+        //        .ToDictionary(x => x.Type)
+        //);
 
-        public Dictionary<Type, BinaryPredicateProviderSuite<ISetEqualityOperationDescriptor, string[]>> For_SetEqualityOperationDescriptors_OfString_ByType => For_SetEqualityOperationDescriptors_OfString_ByType_Lazy.Value;
+        //public Dictionary<Type, BinaryPredicateProviderSuite<ISetEqualityOperationDescriptor, string[]>> For_SetEqualityOperationDescriptors_OfString_ByType => For_SetEqualityOperationDescriptors_OfString_ByType_Lazy.Value;
 
         #endregion
     }

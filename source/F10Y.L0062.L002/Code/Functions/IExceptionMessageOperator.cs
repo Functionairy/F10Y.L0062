@@ -1,31 +1,26 @@
 using System;
 
 using F10Y.T0002;
+using F10Y.T0011;
 
 
 namespace F10Y.L0062.L002
 {
     [FunctionsMarker]
-    public partial interface IExceptionMessageOperator
+    public partial interface IExceptionMessageOperator :
+        L0005.L003.IExceptionMessageOperator
     {
-        public string Get_NoHandlerSuiteFoundForDescriptorTypeExceptionMessage(string implementationType_TypeName)
-        {
-            var message = $"No handler suite found for descriptor type '{implementationType_TypeName}'";
-            return message;
-        }
+#pragma warning disable IDE1006 // Naming Styles
 
-        public string Get_NoHandlerSuiteFoundForDescriptorTypeExceptionMessage<TDescriptor>(TDescriptor descriptor)
-        {
-            var implementationType_TypeName = Instances.TypeOperator.Get_TypeName_OfImplementationType(descriptor);
+        [Ignore]
+        L0005.L003.IExceptionMessageOperator _L0005_L003 => L0005.L003.ExceptionMessageOperator.Instance;
 
-            var output = this.Get_NoHandlerSuiteFoundForDescriptorTypeExceptionMessage(implementationType_TypeName);
-            return output;
-        }
+#pragma warning restore IDE1006 // Naming Styles
 
         /// <summary>
         /// <para><value>No predicate provider found for descriptor.</value></para>
         /// </summary>
-        public string Get_NoPredicateProviderFound_ForDescriptorExceptionMessage<TDescriptor>(TDescriptor descriptor)
+        string Get_NoPredicateProviderFound_ForDescriptorExceptionMessage<TDescriptor>(TDescriptor descriptor)
         {
             var typeName = Instances.TypeOperator.Get_TypeName(descriptor);
 

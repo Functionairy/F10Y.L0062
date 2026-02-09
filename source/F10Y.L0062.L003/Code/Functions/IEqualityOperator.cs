@@ -19,6 +19,6 @@ namespace F10Y.L0062.L003
 
 
         bool Are_Equal(IDescriptorSearchDescriptor a, IDescriptorSearchDescriptor b)
-            => Instances.DescriptorSearchDescriptorOperator.Are_Equal(a, b);
+            => Instances.DescriptorSearchDescriptorOperator.Are_Equal_DisallowNull(a, b);
     }
 }

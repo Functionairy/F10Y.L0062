@@ -9,14 +9,14 @@ namespace F10Y.L0062.L002
 {
     [FunctionsMarker]
     public partial interface IJsonElementSerializationHandlerSuiteOperator<THandled, THandlerSuite> :
-        IHandlerSuiteOperator<THandled, THandlerSuite>,
+        N003.IHandlerSuiteOperator<THandled, THandlerSuite>,
         N001.IJsonElementSerializationHandlerSuiteOperator<THandled, THandlerSuite>
         where THandlerSuite : IJsonElementSerializationHandlerSuite<THandled>
     {
         THandled[] From_JsonSerializationObjects(IEnumerable<JsonSerializationObject> jsonSerializationObjects)
             => this.From_JsonSerializationObjects(
                 jsonSerializationObjects,
-                this.HandlerSuites_ByHandledTypeName);
+                this.HandlerSuites_ByHandledImplementationTypeName);
 
         THandled[] From_JsonSerializationObjects_NullIfNull(IEnumerable<JsonSerializationObject> jsonSerializationObjects)
         {
@@ -34,14 +34,14 @@ namespace F10Y.L0062.L002
         {
             return this.Deserialize_Many_FromJsonFile(
                 jsonFilePath,
-                this.HandlerSuites_ByHandledTypeName);
+                this.HandlerSuites_ByHandledImplementationTypeName);
         }
 
         Task<THandled> Deserialize_FromJsonFile(string jsonFilePath)
         {
             var output = this.Deserialize_FromJsonFile(
                 jsonFilePath,
-                this.HandlerSuites_ByHandledTypeName);
+                this.HandlerSuites_ByHandledImplementationTypeName);
 
             return output;
         }
@@ -50,7 +50,7 @@ namespace F10Y.L0062.L002
         {
             var output = this.Deserialize_FromJsonText(
                 jsonText,
-                this.HandlerSuites_ByHandledTypeName);
+                this.HandlerSuites_ByHandledImplementationTypeName);
 
             return output;
         }
@@ -59,7 +59,7 @@ namespace F10Y.L0062.L002
         {
             var output = this.From_JsonSerializationObject(
                 jsonSerializationObject,
-                this.HandlerSuites_ByHandledTypeName);
+                this.HandlerSuites_ByHandledImplementationTypeName);
 
             return output;
         }
@@ -77,6 +77,16 @@ namespace F10Y.L0062.L002
         Task Serialize_ToJsonFile(
             string jsonFilePath,
             IEnumerable<THandled> descriptors)
+        {
+            return this.Serialize_ToJsonFile(
+                jsonFilePath,
+                descriptors,
+                this.HandlerSuites_ByHandledImplementationType);
+        }
+
+        Task Serialize_ToJsonFile(
+            string jsonFilePath,
+            params THandled[] descriptors)
         {
             return this.Serialize_ToJsonFile(
                 jsonFilePath,

@@ -46,54 +46,54 @@ namespace F10Y.L0062.L002
 
         #region Equality Operation Descriptors
 
-        public DescriptorTextOperationHandlerSuite<IEqualityOperationDescriptor>[] For_EqualityOperationDescriptors => new[]
-        {
-            _DescriptorTextOperationHandlerSuites.For_EqualityOperationDescriptor_Simple,
-            _DescriptorTextOperationHandlerSuites.For_EqualityOperationDescriptor_Simple_WithNot,
-        };
+        //public DescriptorTextOperationHandlerSuite<IEqualityOperationDescriptor>[] For_EqualityOperationDescriptors => new[]
+        //{
+        //    _DescriptorTextOperationHandlerSuites.For_EqualityOperationDescriptor_Simple,
+        //    _DescriptorTextOperationHandlerSuites.For_EqualityOperationDescriptor_Simple_WithNot,
+        //};
 
-        private static readonly Lazy<Dictionary<Type, DescriptorTextOperationHandlerSuite<IEqualityOperationDescriptor>>> For_EqualityOperationDescriptors_ByType_Lazy = new(() =>
-            DescriptorTextOperationHandlerSuiteSets.Instance.For_EqualityOperationDescriptors
-                .ToDictionary(x => x.Type)
-        );
+        //private static readonly Lazy<Dictionary<Type, DescriptorTextOperationHandlerSuite<IEqualityOperationDescriptor>>> For_EqualityOperationDescriptors_ByType_Lazy = new(() =>
+        //    DescriptorTextOperationHandlerSuiteSets.Instance.For_EqualityOperationDescriptors
+        //        .ToDictionary(x => x.Type)
+        //);
 
-        public Dictionary<Type, DescriptorTextOperationHandlerSuite<IEqualityOperationDescriptor>> For_EqualityOperationDescriptors_ByType => For_EqualityOperationDescriptors_ByType_Lazy.Value;
+        //public Dictionary<Type, DescriptorTextOperationHandlerSuite<IEqualityOperationDescriptor>> For_EqualityOperationDescriptors_OfString_ByType => For_EqualityOperationDescriptors_ByType_Lazy.Value;
 
-        private static readonly Lazy<Dictionary<string, DescriptorTextOperationHandlerSuite<IEqualityOperationDescriptor>>> For_EqualityOperationDescriptors_ByTypeName_Lazy = new(() =>
-            DescriptorTextOperationHandlerSuiteSets.Instance.For_EqualityOperationDescriptors_ByType
-                .ToDictionary(
-                    pair => Instances.TypeNameOperator.Get_TypeName(pair.Key),
-                    pair => pair.Value)
-        );
+        //private static readonly Lazy<Dictionary<string, DescriptorTextOperationHandlerSuite<IEqualityOperationDescriptor>>> For_EqualityOperationDescriptors_ByTypeName_Lazy = new(() =>
+        //    DescriptorTextOperationHandlerSuiteSets.Instance.For_EqualityOperationDescriptors_OfString_ByType
+        //        .ToDictionary(
+        //            pair => Instances.TypeNameOperator.Get_TypeName(pair.Key),
+        //            pair => pair.Value)
+        //);
 
-        public Dictionary<string, DescriptorTextOperationHandlerSuite<IEqualityOperationDescriptor>> For_EqualityOperationDescriptors_ByTypeName => For_EqualityOperationDescriptors_ByTypeName_Lazy.Value;
+        //public Dictionary<string, DescriptorTextOperationHandlerSuite<IEqualityOperationDescriptor>> For_EqualityOperationDescriptors_ByTypeName => For_EqualityOperationDescriptors_ByTypeName_Lazy.Value;
 
         #endregion
 
         #region Set Equality Operation Descriptors
 
-        public DescriptorTextOperationHandlerSuite<ISetEqualityOperationDescriptor>[] For_SetEqualityOperationDescriptors => new[]
-        {
-            _DescriptorTextOperationHandlerSuites.For_SetEqualityOperationDescriptor_Containment_OfString,
-            _DescriptorTextOperationHandlerSuites.For_SetEqualityOperationDescriptor_Intersection_OfString,
-            _DescriptorTextOperationHandlerSuites.For_SetEqualityOperationDescriptor_OfString,
-        };
+        //public DescriptorTextOperationHandlerSuite<ISetEqualityOperationDescriptor>[] For_SetEqualityOperationDescriptors => new[]
+        //{
+        //    _DescriptorTextOperationHandlerSuites.For_SetEqualityOperationDescriptor_Containment_OfString,
+        //    _DescriptorTextOperationHandlerSuites.For_SetEqualityOperationDescriptor_Intersection_OfString,
+        //    _DescriptorTextOperationHandlerSuites.For_SetEqualityOperationDescriptor_OfString,
+        //};
 
-        private static readonly Lazy<Dictionary<Type, DescriptorTextOperationHandlerSuite<ISetEqualityOperationDescriptor>>> For_SetEqualityOperationDescriptors_ByType_Lazy = new(() =>
-            DescriptorTextOperationHandlerSuiteSets.Instance.For_SetEqualityOperationDescriptors
-                .ToDictionary(x => x.Type)
-        );
+        //private static readonly Lazy<Dictionary<Type, DescriptorTextOperationHandlerSuite<ISetEqualityOperationDescriptor>>> For_SetEqualityOperationDescriptors_ByType_Lazy = new(() =>
+        //    DescriptorTextOperationHandlerSuiteSets.Instance.For_SetEqualityOperationDescriptors
+        //        .ToDictionary(x => x.Type)
+        //);
 
-        public Dictionary<Type, DescriptorTextOperationHandlerSuite<ISetEqualityOperationDescriptor>> For_SetEqualityOperationDescriptors_ByType => For_SetEqualityOperationDescriptors_ByType_Lazy.Value;
+        //public Dictionary<Type, DescriptorTextOperationHandlerSuite<ISetEqualityOperationDescriptor>> For_SetEqualityOperationDescriptors_OfString_ByType => For_SetEqualityOperationDescriptors_ByType_Lazy.Value;
 
-        private static readonly Lazy<Dictionary<string, DescriptorTextOperationHandlerSuite<ISetEqualityOperationDescriptor>>> For_SetEqualityOperationDescriptors_ByTypeName_Lazy = new(() =>
-            DescriptorTextOperationHandlerSuiteSets.Instance.For_SetEqualityOperationDescriptors_ByType
-                .ToDictionary(
-                    pair => Instances.TypeNameOperator.Get_TypeName(pair.Key),
-                    pair => pair.Value)
-        );
+        //private static readonly Lazy<Dictionary<string, DescriptorTextOperationHandlerSuite<ISetEqualityOperationDescriptor>>> For_SetEqualityOperationDescriptors_ByTypeName_Lazy = new(() =>
+        //    DescriptorTextOperationHandlerSuiteSets.Instance.For_SetEqualityOperationDescriptors_OfString_ByType
+        //        .ToDictionary(
+        //            pair => Instances.TypeNameOperator.Get_TypeName(pair.Key),
+        //            pair => pair.Value)
+        //);
 
-        public Dictionary<string, DescriptorTextOperationHandlerSuite<ISetEqualityOperationDescriptor>> For_SetEqualityOperationDescriptors_ByTypeName => For_SetEqualityOperationDescriptors_ByTypeName_Lazy.Value;
+        //public Dictionary<string, DescriptorTextOperationHandlerSuite<ISetEqualityOperationDescriptor>> For_SetEqualityOperationDescriptors_ByTypeName => For_SetEqualityOperationDescriptors_ByTypeName_Lazy.Value;
 
         #endregion
     }

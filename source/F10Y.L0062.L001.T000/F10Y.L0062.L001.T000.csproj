@@ -14,6 +14,7 @@
     <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
   </PropertyGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\..\F10Y.L0005\source\F10Y.L0005.T001\F10Y.L0005.T001.csproj" />
     <ProjectReference Include="..\..\..\F10Y.T0004\source\F10Y.T0004\F10Y.T0004.csproj" />
     <ProjectReference Include="..\F10Y.L0062.T001\F10Y.L0062.T001.csproj" />
   </ItemGroup>

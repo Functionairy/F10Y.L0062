@@ -8,9 +8,9 @@ namespace F10Y.L0062.L002.T000
     [FunctionsMarker]
     public partial interface ISetEqualityOperationDescriptorOperator
     {
-        public SetEqualityOperationDescriptor From(
+        SetEqualityOperationDescriptor From(
             IEqualityOperationDescriptor element_EqualityOperationDescriptor,
-            OrderDependence orderDependence)
+            OrderDependence orderDependence = OrderDependence.OrderIndependent)
         {
             var output = new SetEqualityOperationDescriptor
             {
@@ -21,7 +21,17 @@ namespace F10Y.L0062.L002.T000
             return output;
         }
 
-        public SetEqualityOperationDescriptor_Intersection From(
+        SetEqualityOperationDescriptor From_OrderDependent(IEqualityOperationDescriptor element_EqualityOperationDescriptor)
+            => this.From(
+                element_EqualityOperationDescriptor,
+                OrderDependence.OrderDependent);
+
+        SetEqualityOperationDescriptor From_OrderIndependent(IEqualityOperationDescriptor element_EqualityOperationDescriptor)
+            => this.From(
+                element_EqualityOperationDescriptor,
+                OrderDependence.OrderIndependent);
+
+        SetEqualityOperationDescriptor_Intersection From(
             IEqualityOperationDescriptor element_EqualityOperationDescriptor,
             AnyOrNone anyOrNone)
         {
@@ -34,16 +44,21 @@ namespace F10Y.L0062.L002.T000
             return output;
         }
 
+        SetEqualityOperationDescriptor_Intersection From_AnyIntersection(IEqualityOperationDescriptor element_EqualityOperationDescriptor)
+            => this.From(
+                element_EqualityOperationDescriptor,
+                AnyOrNone.Any);
+
         /// <summary>
         /// 
         /// </summary>
         /// <param name="element_EqualityOperationDescriptor"></param>
-        /// <param name="containment">Is a set a subset or superset of the specified search set?</param>
-        /// <param name="contiguity"></param>
-        /// <param name="orderDependence"></param>
-        /// <param name="inclusiveness">Inclusive of sets that are equal to the search set?</param>
+        /// <param name="containment"><inheritdoc cref="SetEqualityOperationDescriptor_Containment.Containment" path="/summary"/></param>
+        /// <param name="contiguity"><inheritdoc cref="SetEqualityOperationDescriptor_Containment.Contiguity" path="/summary"/></param>
+        /// <param name="orderDependence"><inheritdoc cref="SetEqualityOperationDescriptor_Containment.OrderDependence" path="/summary"/></param>
+        /// <param name="inclusiveness"><inheritdoc cref="SetEqualityOperationDescriptor_Containment.Inclusiveness" path="/summary"/></param>
         /// <returns></returns>
-        public SetEqualityOperationDescriptor_Containment From(
+        SetEqualityOperationDescriptor_Containment From(
             IEqualityOperationDescriptor element_EqualityOperationDescriptor,
             Containment containment,
             Contiguity contiguity,

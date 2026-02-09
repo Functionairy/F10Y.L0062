@@ -8,15 +8,16 @@ using F10Y.T0004;
 namespace F10Y.L0062.L002
 {
     [DataTypeMarker]
-    public class DescriptorHandlerSuite : DescriptorHandlerSuite<IDescriptor>
+    public class DescriptorHandlerSuite : DescriptorHandlerSuite<IDescriptor>,
+        For_Descriptors.IDescriptorProviderHandlerSuite<IDescriptor>
     {
-
+        public Func<IDescriptor, Descriptor> Get_Descriptor { get; set; }
     }
 
 
     [DataTypeMarker]
     public class DescriptorHandlerSuite<TDescriptor> :
-        Synchronous.IEqualityPredicateProviderHandlerSuite<TDescriptor>,
+        Synchronous.IEqualityPredicateHandlerSuite<TDescriptor>,
         IHashCodeProviderHandlerSuite<TDescriptor>,
         IJsonElementSerializationHandlerSuite<TDescriptor>,
         ITextSerializationHandlerSuite<TDescriptor>,
@@ -24,7 +25,7 @@ namespace F10Y.L0062.L002
     {
         public Type Type { get; set; }
 
-        public Func<TDescriptor, TDescriptor, bool> EqualityPredicate { get; set; }
+        public Func<TDescriptor, TDescriptor, bool> Equality_Predicate { get; set; }
 
         public Func<TDescriptor, int> Get_HashCode { get; set; }
 

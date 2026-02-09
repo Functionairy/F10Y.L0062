@@ -19,6 +19,6 @@ namespace F10Y.L0062.L002
 
 
         int Get_HashCode(IDescriptor descriptor)
-            => Instances.DescriptorOperator.Get_HashCode(descriptor);
+            => Instances.DescriptorOperator.Get_HashCode_DisallowNull(descriptor);
     }
 }

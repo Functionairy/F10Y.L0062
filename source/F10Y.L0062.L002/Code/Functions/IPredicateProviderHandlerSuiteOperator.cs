@@ -6,36 +6,34 @@ using F10Y.T0002;
 namespace F10Y.L0062.L002.Synchronous
 {
     [FunctionsMarker]
-    public partial interface IPredicateProviderHandlerSuiteOperator<THandled, TValue, THandlerSuite> :
-        IHandlerSuiteOperator<THandled, THandlerSuite>,
-        Synchronous.N001.IPredicateProviderHandlerSuiteOperator<THandled, TValue, THandlerSuite>
-        where THandlerSuite : Synchronous.IPredicateProviderHandlerSuite<THandled, TValue>
+    public partial interface IPredicateProviderHandlerSuiteOperator<THandled, THandlerSuite> :
+        L002.N001.IHandlerSuiteOperator<THandled, THandlerSuite>,
+        N001.IPredicateProviderHandlerSuiteOperator<THandled, THandlerSuite>
+        where THandlerSuite : IPredicateProviderHandlerSuite<THandled>
     {
-        bool Evaluate(
-            THandled handled,
-            TValue value)
-            => this.Evaluate(
+        Func<THandled, bool> Get_Predicate(THandled handled)
+            => this.Get_Predicate(
                 handled,
-                value,
                 this.HandlerSuites_ByHandledImplementationType);
+    }
 
+
+    [FunctionsMarker]
+    public partial interface IPredicateProviderHandlerSuiteOperator<THandled, TValue, THandlerSuite> :
+        L002.N001.IHandlerSuiteOperator<THandled, THandlerSuite>,
+        N001.IPredicateProviderHandlerSuiteOperator<THandled, TValue, THandlerSuite>
+        where THandlerSuite : IPredicateProviderHandlerSuite<THandled, TValue>
+    {
         Func<TValue, bool> Get_Predicate(THandled handled)
             => this.Get_Predicate(
                 handled,
                 this.HandlerSuites_ByHandledImplementationType);
 
-        Func<TValue, bool> Get_Predicate(
-            THandled handled,
-            THandlerSuite handlerSuite)
-            => value => handlerSuite.Predicate(
-                handled,
-                value);
-
         bool Has_Predicate_Synchronous(
-            THandled handled,
+            THandled descriptor,
             out Func<TValue, bool> predicate_OrDefault)
         {
-            var isNull = Instances.NullOperator.Is_Null(handled);
+            var isNull = Instances.NullOperator.Is_Null(descriptor);
             if (isNull)
             {
                 predicate_OrDefault = default;
@@ -43,24 +41,23 @@ namespace F10Y.L0062.L002.Synchronous
                 return false;
             }
 
-            var can_Handle = this.Can_Handle(
-                handled,
+            var can_Handle = Instances.HandlerSuiteOperator.Can_Handle(
+                descriptor,
+                this.HandlerSuites_ByHandledImplementationType,
                 out var handlerSuite_OrDefault);
 
             predicate_OrDefault = can_Handle
-                ? this.Get_Predicate(
-                    handled,
-                    handlerSuite_OrDefault)
+                ? handlerSuite_OrDefault.Get_Predicate(descriptor)
                 : default
                 ;
 
             return can_Handle;
         }
 
-        For_Results.N004.Result<Func<TValue, bool>> Has_Predicate_Synchronous(THandled handled)
+        For_Results.N004.Result<Func<TValue, bool>> Has_Predicate_Synchronous(THandled descriptor)
         {
             var has_Predicate = this.Has_Predicate_Synchronous(
-                handled,
+                descriptor,
                 out var predicate_OrDefault);
 
             var output = new For_Results.N004.Result<Func<TValue, bool>>

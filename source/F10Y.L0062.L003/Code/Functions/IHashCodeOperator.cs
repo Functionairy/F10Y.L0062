@@ -18,6 +18,6 @@ namespace F10Y.L0062.L003
 #pragma warning restore IDE1006 // Naming Styles
 
         int Get_HashCode(IDescriptorSearchDescriptor searchDescriptor)
-            => Instances.DescriptorSearchDescriptorOperator.Get_HashCode(searchDescriptor);
+            => Instances.DescriptorSearchDescriptorOperator.Get_HashCode_DisallowNull(searchDescriptor);
     }
 }

@@ -7,7 +7,7 @@ namespace F10Y.L0062.L002
 {
     [DataTypeMarker]
     public class SearchDescriptorHandlerSuite<TSearchDescriptor, TDescriptor> : DescriptorHandlerSuite<TSearchDescriptor>,
-        Synchronous.IPredicateProviderHandlerSuite<TSearchDescriptor, TDescriptor>
+        Synchronous.IPredicateHandlerSuite<TSearchDescriptor, TDescriptor>
     {
         public Func<TSearchDescriptor, TDescriptor, bool> Predicate { get; set; }
     }

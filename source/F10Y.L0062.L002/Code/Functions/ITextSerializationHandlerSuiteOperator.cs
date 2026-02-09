@@ -1,6 +1,6 @@
 using System;
 using System.Collections.Generic;
-
+using System.Linq;
 using F10Y.T0002;
 
 
@@ -39,6 +39,14 @@ namespace F10Y.L0062.L002
             => this.To_Text_Noexceptive(
                 descriptor,
                 this.HandlerSuites_ByHandledImplementationType);
+
+        IEnumerable<string> To_Text(IEnumerable<THandled> handleds)
+            => this.To_Text(
+                handleds,
+                this.HandlerSuites_ByHandledImplementationType);
+
+        IEnumerable<string> To_Text(params THandled[] handleds)
+            => this.To_Text(handleds.AsEnumerable());
 
         For_Results.N003.Result<
             IEnumerable<string>,

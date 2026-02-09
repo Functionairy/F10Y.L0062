@@ -39,14 +39,15 @@ namespace F10Y.L0062.L003
         bool Evaluate(
             DescriptorSearchDescriptor_Name_Simple searchDescriptor,
             IDescriptor descriptor)
-            => Instances.StringOperator.Are_Equal(
-                searchDescriptor.Name,
-                descriptor.Name);
+        {
+            var descriptor_Name = Instances.DescriptorOperator.Get_Name(descriptor);
 
-        //Func<IDescriptor, bool> Get_PredicateFor(DescriptorSearchDescriptor_Name_Simple descriptorSearchDescriptor)
-        //    => value => Instances.StringOperator.Are_Equal(
-        //        descriptorSearchDescriptor.Name,
-        //        value.Name);
+            var output = Instances.StringOperator.Are_Equal(
+                searchDescriptor.Name,
+                descriptor_Name);
+
+            return output;
+        }
 
         IEnumerable<string> To_Text_ContentOnly(DescriptorSearchDescriptor_Name_Simple descriptorSearchDescriptor)
         {

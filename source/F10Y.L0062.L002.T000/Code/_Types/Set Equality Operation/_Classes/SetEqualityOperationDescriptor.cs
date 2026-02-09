@@ -7,7 +7,7 @@ namespace F10Y.L0062.L002.T000
 {
     /// <summary>
     /// Describes an equality test on two sets.
-    /// Allows for order in/dependent testing.
+    /// Allows for order dependent testing.
     /// </summary>
     [DataTypeMarker]
     public class SetEqualityOperationDescriptor : SetEqualityOperationDescriptorBase

@@ -14,7 +14,7 @@ namespace F10Y.L0062.L002.T000
     public class SetEqualityOperationDescriptor_Containment : SetEqualityOperationDescriptorBase
     {
         /// <summary>
-        /// Is set A a subset or superset of set B?
+        /// Is set B a subset or superset of set A in Is_{Sub, Super}set(A, B)?
         /// </summary>
         public Containment Containment { get; set; }
 

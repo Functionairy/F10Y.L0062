@@ -1,35 +1,43 @@
 using System;
 
 using F10Y.T0003;
-
-using F10Y.L0062.L002.T000;
+using F10Y.T0011;
 
 
 namespace F10Y.L0062.L002
 {
     [ValuesMarker]
-    public partial interface ITypeSpecifiers
+    public partial interface ITypeSpecifiers :
+        L0005.L004.ITypeSpecifiers
     {
-        #region Descriptors
+#pragma warning disable IDE1006 // Naming Styles
 
-        For_TypeSpecifiers.TypeSpecifier<IDescriptor> For_IDescriptor =>
-            For_TypeSpecifiers.TypeSpecifier<IDescriptor>.Instance;
+        [Ignore]
+        L0005.L004.ITypeSpecifiers _L0005_L004 => L0005.L004.TypeSpecifiers.Instance;
 
-        For_TypeSpecifiers.TypeSpecifier<IDescriptor, Descriptor> For_Descriptor =>
-            For_TypeSpecifiers.TypeSpecifier<IDescriptor, Descriptor>.Instance;
+#pragma warning restore IDE1006 // Naming Styles
 
-        #endregion
 
         #region Equality Operation Descriptors
 
         For_TypeSpecifiers.TypeSpecifier<IEqualityOperationDescriptor> For_IEqualityOperationDescriptor =>
             For_TypeSpecifiers.TypeSpecifier<IEqualityOperationDescriptor>.Instance;
 
-        For_TypeSpecifiers.TypeSpecifier<IEqualityOperationDescriptor, EqualityOperationDescriptor_Simple> For_EqualityOperationDescriptor_Simple_OfString =>
+        For_TypeSpecifiers.TypeSpecifier<IEqualityOperationDescriptor, EqualityOperationDescriptor_Simple> For_EqualityOperationDescriptor_Simple =>
             For_TypeSpecifiers.TypeSpecifier<IEqualityOperationDescriptor, EqualityOperationDescriptor_Simple>.Instance;
 
-        For_TypeSpecifiers.TypeSpecifier<IEqualityOperationDescriptor, EqualityOperationDescriptor_Simple_WithNot> For_EqualityOperationDescriptor_Simple_WithNot_OfString =>
+        For_TypeSpecifiers.TypeSpecifier<IEqualityOperationDescriptor, EqualityOperationDescriptor_Simple_WithNot> For_EqualityOperationDescriptor_Simple_WithNot =>
             For_TypeSpecifiers.TypeSpecifier<IEqualityOperationDescriptor, EqualityOperationDescriptor_Simple_WithNot>.Instance;
+
+        #endregion
+
+        #region Hash Code Operation Descriptors
+
+        For_TypeSpecifiers.TypeSpecifier<IHashCodeOperationDescriptor> For_IHashCodeOperationDescriptor =>
+            For_TypeSpecifiers.TypeSpecifier<IHashCodeOperationDescriptor>.Instance;
+
+        For_TypeSpecifiers.TypeSpecifier<IHashCodeOperationDescriptor, HashCodeOperationDescriptor_Simple> For_HashCodeOperationDescriptor_Simple =>
+            For_TypeSpecifiers.TypeSpecifier<IHashCodeOperationDescriptor, HashCodeOperationDescriptor_Simple>.Instance;
 
         #endregion
 
@@ -38,13 +46,13 @@ namespace F10Y.L0062.L002
         For_TypeSpecifiers.TypeSpecifier<ISetEqualityOperationDescriptor> For_ISetEqualityOperationDescriptor =>
             For_TypeSpecifiers.TypeSpecifier<ISetEqualityOperationDescriptor>.Instance;
 
-        For_TypeSpecifiers.TypeSpecifier<ISetEqualityOperationDescriptor, SetEqualityOperationDescriptor> For_SetEqualityOperationDescriptor_OfString =>
+        For_TypeSpecifiers.TypeSpecifier<ISetEqualityOperationDescriptor, SetEqualityOperationDescriptor> For_SetEqualityOperationDescriptor =>
             For_TypeSpecifiers.TypeSpecifier<ISetEqualityOperationDescriptor, SetEqualityOperationDescriptor>.Instance;
 
-        For_TypeSpecifiers.TypeSpecifier<ISetEqualityOperationDescriptor, SetEqualityOperationDescriptor_Containment> For_SetEqualityOperationDescriptor_Containment_OfString =>
+        For_TypeSpecifiers.TypeSpecifier<ISetEqualityOperationDescriptor, SetEqualityOperationDescriptor_Containment> For_SetEqualityOperationDescriptor_Containment =>
             For_TypeSpecifiers.TypeSpecifier<ISetEqualityOperationDescriptor, SetEqualityOperationDescriptor_Containment>.Instance;
 
-        For_TypeSpecifiers.TypeSpecifier<ISetEqualityOperationDescriptor, SetEqualityOperationDescriptor_Intersection> For_SetEqualityOperationDescriptor_Intersection_OfString =>
+        For_TypeSpecifiers.TypeSpecifier<ISetEqualityOperationDescriptor, SetEqualityOperationDescriptor_Intersection> For_SetEqualityOperationDescriptor_Intersection =>
             For_TypeSpecifiers.TypeSpecifier<ISetEqualityOperationDescriptor, SetEqualityOperationDescriptor_Intersection>.Instance;
 
         #endregion

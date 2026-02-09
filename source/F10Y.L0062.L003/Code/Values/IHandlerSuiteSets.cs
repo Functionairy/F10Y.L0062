@@ -41,5 +41,31 @@ namespace F10Y.L0062.L003
         Dictionary<string, DescriptorSearchDescriptorHandlerSuite> For_DescriptorSearchDescriptors_ByTypeName => For_DescriptorSearchDescriptors_ByTypeName_Lazy.Value;
 
         #endregion
+
+        #region String Search Descriptors
+
+        StringSearchDescriptorHandlerSuite[] For_StringSearchDescriptors => new[]
+        {
+            _HandlerSuites.For_StringSearchDescriptor_EqualityOperationDescriptor,
+            _HandlerSuites.For_StringSearchDescriptor_Equals_Simple,
+        };
+
+        private static readonly Lazy<Dictionary<Type, StringSearchDescriptorHandlerSuite>> For_StringSearchDescriptors_ByType_Lazy = new(() =>
+            HandlerSuiteSets.Instance.For_StringSearchDescriptors
+                .ToDictionary(x => x.Type)
+        );
+
+        Dictionary<Type, StringSearchDescriptorHandlerSuite> For_StringSearchDescriptors_ByType => For_StringSearchDescriptors_ByType_Lazy.Value;
+
+        private static readonly Lazy<Dictionary<string, StringSearchDescriptorHandlerSuite>> For_StringSearchDescriptors_ByTypeName_Lazy = new(() =>
+            HandlerSuiteSets.Instance.For_StringSearchDescriptors_ByType
+                .ToDictionary(
+                    pair => Instances.TypeNameOperator.Get_TypeName(pair.Key),
+                    pair => pair.Value)
+        );
+
+        Dictionary<string, StringSearchDescriptorHandlerSuite> For_StringSearchDescriptors_ByTypeName => For_StringSearchDescriptors_ByTypeName_Lazy.Value;
+
+        #endregion
     }
 }
