@@ -22,14 +22,6 @@ namespace F10Y.L0062.L002
 #pragma warning restore IDE1006 // Naming Styles
 
 
-        Exception Get_NoHandlerSuiteFoundForDescriptorTypeException(string implementationType_TypeName)
-        {
-            var message = Instances.ExceptionMessageOperator.Get_NoHandlerSuiteFoundForDescriptorTypeExceptionMessage(implementationType_TypeName);
-
-            var output = this.From(message);
-            return output;
-        }
-
         Exception Get_NoPredicateProviderFound_ForDescriptorException()
         {
             var message = Instances.ExceptionMessages.NoPredicateProviderFound_ForDescriptor;
